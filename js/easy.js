@@ -24,7 +24,7 @@ var graphicAssets = {
   // backgroundURL: 'assets/tennis-court.png',
   // backgroundName: 'tennisCourt',
 
-  ballURL: 'assets/svg/ball_yellow.svg',
+  ballURL: 'http://c.thumbs.redditmedia.com/yeSM3mMsabJYurM2.png',
   ballName: 'ball',
 
   paddleURL: 'http://c.thumbs.redditmedia.com/yeSM3mMsabJYurM2.png',
