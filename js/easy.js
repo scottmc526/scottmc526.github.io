@@ -27,7 +27,7 @@ var graphicAssets = {
   ballURL: 'assets/svg/ball_yellow.svg',
   ballName: 'ball',
 
-  paddleURL: 'assets/cat.png',
+  paddleURL: 'http://c.thumbs.redditmedia.com/yeSM3mMsabJYurM2.png',
   paddleName: 'paddle'
 };
 
