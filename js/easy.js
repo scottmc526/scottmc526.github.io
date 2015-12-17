@@ -22,13 +22,13 @@ $('.search').click(function (){
     };
 
 var gameProperties = {
-    screenWidth: 800,
+    screenWidth: 1000,
     screenHeight: 600,
 
     dashSize: 5,
 
-    paddleLeftXPlane: 30,
-    paddleRightXPlane: 770,
+    paddleLeftXPlane: 100,
+    paddleRightXPlane: 900,
     paddleVelocity: 600,
     paddleSegmentsMax: 4,
     paddleSegmentHeight: 20,
@@ -39,7 +39,7 @@ var gameProperties = {
     ballRandomStartingAngleRight: [-60, 60],
     ballStartDelay: 2,
 
-    scoreToWin: 5,
+    scoreToWin: 1,
 };
 paddleFile.data = new Image();
 paddleFile.data.name = paddleFile.key;
@@ -125,8 +125,9 @@ mainState.prototype = {
       }
       this.ballSprite = game.add.sprite(game.world.centerX, game.world.centerY, graphicAssets.ballName);
       this.ballSprite.anchor.set(0.5, 0.5);
+      this.ballSprite.scale.setTo(.5, .5)
 
-      this.paddleLeftSprite = game.add.sprite(gameProperties.paddleLeft_x, game.world.centerY, graphicAssets.paddleName);
+      this.paddleLeftSprite = game.add.sprite(gameProperties.paddleLeftXPlane, game.world.centerY, graphicAssets.paddleName);
       this.paddleLeftSprite.anchor.set(0.5, 0.5);
       this.paddleLeftSprite.scale.setTo(1, 1);
 

@@ -1,5 +1,4 @@
 body {
-  background-color: black;
   margin: 0;
   display: flex;
 }
@@ -9,7 +8,7 @@ body {
 
 .left {
   height: 90vh;
-  width: 17vw;
+  width: 10vw;
   border: 1px solid black;
   margin: 1% auto;
   display: flex;
@@ -17,7 +16,7 @@ body {
 }
 .right {
   height: 90vh;
-  width: 17vw;
+  width: 10vw;
   border: 1px solid black;
   margin: 1% auto;
 }
