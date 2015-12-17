@@ -1,4 +1,22 @@
-// The game properties object that currently only contains the screen dimensions
+var search;
+$('.search').click(function (){
+  search = $('.theme').val();
+
+  var getter = $.ajax({
+    url: "https://www.reddit.com/subreddits/search.json?q="+search,
+    method: 'GET',
+    dataType: 'json'
+  })
+  getter.done(function (returned){
+    var images = returned['data']['children'][0]['data']['header_img'];
+    var paddleFile = {
+      type:'image',
+      key:'paddle',
+      url: images,
+      data: null
+    };
+    console.log(paddleFile.url);
+
 var gameProperties = {
     screenWidth: 800,
     screenHeight: 600,
@@ -17,16 +35,16 @@ var gameProperties = {
     ballRandomStartingAngleRight: [-60, 60],
     ballStartDelay: 2,
 
-    scoreToWin: 2,
+    scoreToWin: 5,
 };
-var paddleFile = {
-  type:'image',
-  key: 'paddle',
-  url: "http://mvshospital.com/wp-content/uploads/2015/06/13902170611226395134cat_png_by_dbszabo1-d3dn2c8.png",
-  data: null,
-  error: false,
-  loaded: false
-};
+// var paddleFile = {
+//   type:'image',
+//   key: 'paddle',
+//   url: 'images',
+//   data: null,
+//   // error: false,
+//   // loaded: false
+// };
 paddleFile.data = new Image();
 paddleFile.data.name = paddleFile.key;
 
@@ -125,11 +143,11 @@ mainState.prototype = {
 
       this.paddleLeftSprite = game.add.sprite(gameProperties.paddleLeft_x, game.world.centerY, graphicAssets.paddleName);
       this.paddleLeftSprite.anchor.set(0.5, 0.5);
-      this.paddleLeftSprite.scale.setTo(.2, .2);
+      this.paddleLeftSprite.scale.setTo(1, 1);
 
       this.paddleRightSprite = game.add.sprite(gameProperties.paddleRight_x, game.world.centerY, graphicAssets.paddleName)
       this.paddleRightSprite.anchor.set(0.5, 0.5);
-      this.paddleRightSprite.scale.setTo(.2, .2);
+      this.paddleRightSprite.scale.setTo(1, 1);
 
       this.tf_scoreLeft = game.add.text(fontAssets.scoreLeft_x, fontAssets.scoreTop_y, '0', fontAssets.scoreFontStyle)
       this.tf_scoreLeft.anchor.set(0.5, 0);
@@ -307,3 +325,5 @@ game.state.add('main', mainState);
 
 // We are using the 'main' state name as the argument to load our new state.
 game.state.start('main');
+})
+})
