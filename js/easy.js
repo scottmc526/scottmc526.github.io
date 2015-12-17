@@ -1,4 +1,5 @@
 var search;
+var ball;
 $('.search').click(function (){
   search = $('.theme').val();
 
@@ -20,7 +21,40 @@ $('.search').click(function (){
       key:'paddle',
       url: images,
     };
+    paddleFile.data = new Image();
+    paddleFile.data.name = paddleFile.key;
 
+    paddleFile.data.onload = function () {
+      paddleFile.loaded = true;
+      game.cache.addImage(paddleFile.key, paddleFile.url, paddleFile.data);
+    };
+
+    paddleFile.data.onerror = function () {
+      paddleFile.error = true;
+    }
+
+    paddleFile.data.crossOrigin = '';
+    paddleFile.data.src = paddleFile.url;
+var value = $('#ballColor').val()
+
+switch (value) {
+  case '1':
+    ball = 'assets/svg/ball_blue.svg';
+    break;
+  case '2':
+    ball = 'assets/svg/ball_gray.svg';
+    break;
+  case '3':
+    ball = 'assets/svg/ball_pink.svg';
+    break;
+  case '4':
+    ball = 'assets/svg/ball_red.svg';
+    break;
+  case '5':
+    ball = 'assets/svg/ball_yellow.svg';
+  default :
+    ball = 'assets/ball.png'
+}
 var gameProperties = {
     screenWidth: 1000,
     screenHeight: 600,
@@ -39,25 +73,11 @@ var gameProperties = {
     ballRandomStartingAngleRight: [-60, 60],
     ballStartDelay: 2,
 
-    scoreToWin: 1,
+    scoreToWin: 2,
 };
-paddleFile.data = new Image();
-paddleFile.data.name = paddleFile.key;
-
-paddleFile.data.onload = function () {
-  paddleFile.loaded = true;
-  game.cache.addImage(paddleFile.key, paddleFile.url, paddleFile.data);
-};
-
-paddleFile.data.onerror = function () {
-  paddleFile.error = true;
-}
-
-paddleFile.data.crossOrigin = '';
-paddleFile.data.src = paddleFile.url;
 
 var graphicAssets = {
-  ballURL: 'assets/svg/ball_blue.svg',
+  ballURL: ball,
   ballName: 'ball',
 
   paddleURL: paddleFile.data.crossOrigin.src,
@@ -89,9 +109,6 @@ var mainState = function(game){
 
   this.scoreLeft;
   this.scoreRight;
-
-  this.tf_scoreLeft;
-  this.tf_scoreLeft;
 };
 mainState.prototype = {
 
@@ -105,7 +122,7 @@ mainState.prototype = {
       this.initPhysics();
       this.initKeyboard();
       this.startDemo();
-      game.stage.backgroundColor = '#337799';
+      game.stage.backgroundColor= '#68b259';
 
     },
 
@@ -298,18 +315,11 @@ mainState.prototype = {
     }
 };
 
-// Initialise the Phaser framework by creating an instance of a Phaser.Game object and assigning it to a local variable called 'game'.
-// The first two arguments are the width and the height of the canvas element. In this case 640 x 480 pixels. You can resize this in the gameProperties object above.
-// The third argument is the renderer that will be used. Phaser.AUTO is used to automatically detect whether to use the WebGL or Canvas renderer.
-// The fourth argument is 'gameDiv', which is the id of the DOM element we used above in the index.html file where the canvas element is inserted.
 var game = new Phaser.Game(gameProperties.screenWidth, gameProperties.screenHeight, Phaser.AUTO, 'gameDiv');
 
-// Here we declare and add a state to the game object.
-// The first argument is the state name that will is used to switch between states
-// The second argument is the object name that will used when a state name is called
+
 game.state.add('main', mainState);
 
-// We are using the 'main' state name as the argument to load our new state.
 game.state.start('main');
-})
+  })
 })

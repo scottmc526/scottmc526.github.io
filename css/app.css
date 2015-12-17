@@ -1,6 +1,7 @@
 body {
   margin: 0;
   display: flex;
+  background-color: red;
 }
 #gameDiv {
   margin: 0 auto;
@@ -37,6 +38,7 @@ img {
   height: 100%;
   width: 80%;
 }
+
 /*.player {
   list-style: none;
 
