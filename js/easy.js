@@ -19,28 +19,28 @@ var gameProperties = {
 
     scoreToWin: 2,
 };
-// var paddleFile = {
-//   type:'image',
-//   key: 'paddle',
-//   url: "assets/cat.png",
-//   data: null,
-//   error: false,
-//   loaded: false
-// };
-// paddleFile.data = new Image();
-// paddleFile.data.name = paddleFile.key;
-//
-// paddleFile.data.onload = function () {
-//   paddleFile.loaded = true;
-//   game.cache.addImage(paddleFile.key, paddleFile.url, paddleFile.data);
-// };
-//
-// paddleFile.data.onerror = function () {
-//   paddleFile.error = true;
-// }
-//
-// paddleFile.data.crossOrigin = '';
-// paddleFile.data.src = paddleFile.url;
+var paddleFile = {
+  type:'image',
+  key: 'paddle',
+  url: "assets/tennisball.png",
+  data: null,
+  error: false,
+  loaded: false
+};
+paddleFile.data = new Image();
+paddleFile.data.name = paddleFile.key;
+
+paddleFile.data.onload = function () {
+  paddleFile.loaded = true;
+  game.cache.addImage(paddleFile.key, paddleFile.url, paddleFile.data);
+};
+
+paddleFile.data.onerror = function () {
+  paddleFile.error = true;
+}
+
+paddleFile.data.crossOrigin = '';
+paddleFile.data.src = paddleFile.url;
 
 var graphicAssets = {
   // backgroundURL: 'assets/tennis-court.png',
@@ -90,7 +90,8 @@ mainState.prototype = {
       // game.load.image(graphicAssets.backgroundName, graphicAssets.backgroundURL);
 
       game.load.image(graphicAssets.ballName, graphicAssets.ballURL);
-      game.load.image(graphicAssets.paddleName, graphicAssets.paddleURL);
+      // game.load.image(graphicAssets.paddleName, graphicAssets.paddleURL);
+      game.load.image(paddleFile.data.src)
 
 
     },
