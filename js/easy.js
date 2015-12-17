@@ -17,17 +17,41 @@ var gameProperties = {
     ballRandomStartingAngleRight: [-60, 60],
     ballStartDelay: 2,
 
-    scoreToWin: 11,
+    scoreToWin: 2,
 };
+// var paddleFile = {
+//   type:'image',
+//   key: 'paddle',
+//   url: "assets/cat.png",
+//   data: null,
+//   error: false,
+//   loaded: false
+// };
+// paddleFile.data = new Image();
+// paddleFile.data.name = paddleFile.key;
+//
+// paddleFile.data.onload = function () {
+//   paddleFile.loaded = true;
+//   game.cache.addImage(paddleFile.key, paddleFile.url, paddleFile.data);
+// };
+//
+// paddleFile.data.onerror = function () {
+//   paddleFile.error = true;
+// }
+//
+// paddleFile.data.crossOrigin = '';
+// paddleFile.data.src = paddleFile.url;
 
 var graphicAssets = {
   // backgroundURL: 'assets/tennis-court.png',
   // backgroundName: 'tennisCourt',
 
-  ballURL: 'http://c.thumbs.redditmedia.com/yeSM3mMsabJYurM2.png',
+  ballURL: 'assets/svg/ball_blue.svg',
   ballName: 'ball',
 
-  paddleURL: 'http://c.thumbs.redditmedia.com/yeSM3mMsabJYurM2.png',
+  // paddleFile.data = new Image ();
+  // paddleFile.data.name = paddleFile.key
+  paddleURL: 'assets/paddle.png',
   paddleName: 'paddle'
 };
 
@@ -228,6 +252,21 @@ mainState.prototype = {
         game.physics.arcade.velocityFromAngle(returnAngle, gameProperties.ballVelocity, this.ballSprite.body.velocity)
       }
     },
+    playerOneVictor: function () {
+      $('#gameDiv').empty();
+      $('#gameDiv').append('<img src=http://cdn.meme.am/instances/57638824.jpg />')
+    },
+    playerTwoVictor: function () {
+      $('#gameDiv').empty();
+      $('#gameDiv').append('<img src=http://cdn.meme.am/instances/29101253.jpg />');
+    },
+    onWin : function () {
+      if (this.scoreLeft === gameProperties.scoreToWin) {
+        this.playerOneVictor();
+      } else if (this.scoreRight === gameProperties.scoreToWin){
+        this.playerTwoVictor();
+      }
+    },
     ballOutOfBounds: function (){
       if (this.ballSprite.x < 0) {
         this.missedSide = 'left';
@@ -239,7 +278,7 @@ mainState.prototype = {
       this.updateScore();
 
       if(this.scoreLeft >= gameProperties.scoreToWin || this.scoreRight >= gameProperties.scoreToWin) {
-        this.startDemo();
+        this.onWin();
       } else {
         this.resetBall();
       }

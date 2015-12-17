@@ -16,7 +16,7 @@ var gameProperties = {
     ballRandomStartingAngleRight: [-60, 60],
     ballStartDelay: 2,
 
-    scoreToWin: 11,
+    scoreToWin: 1,
 };
 
 var graphicAssets = {
@@ -221,6 +221,21 @@ mainState.prototype = {
         game.physics.arcade.velocityFromAngle(returnAngle, gameProperties.ballVelocity, this.ballSprite.body.velocity)
       }
     },
+    playerOneVictor: function () {
+      $('#gameDiv').empty();
+      $('#gameDiv').append('<img src=http://cdn.meme.am/instances/57638824.jpg />')
+    },
+    playerTwoVictor: function () {
+      $('#gameDiv').empty();
+      $('#gameDiv').append('<img src=http://cdn.meme.am/instances/29101253.jpg />');
+    },
+    onWin : function () {
+      if (this.scoreLeft === gameProperties.scoreToWin) {
+        this.playerOneVictor();
+      } else if (this.scoreRight === gameProperties.scoreToWin){
+        this.playerTwoVictor();
+      }
+    },
     ballOutOfBounds: function (){
       if (this.ballSprite.x < 0) {
         this.missedSide = 'left';
@@ -232,7 +247,7 @@ mainState.prototype = {
       this.updateScore();
 
       if(this.scoreLeft >= gameProperties.scoreToWin || this.scoreRight >= gameProperties.scoreToWin) {
-        this.startDemo();
+        this.onWin();
       } else {
         this.resetBall();
       }
