@@ -5,8 +5,8 @@ var gameProperties = {
 
     dashSize: 5,
 
-    paddleLeft_x: 10,
-    paddleRight_x: 790,
+    paddleLeft_x: 30,
+    paddleRight_x: 770,
     paddleVelocity: 600,
     paddleSegmentsMax: 4,
     paddleSegmentHeight: 20,
@@ -22,7 +22,7 @@ var gameProperties = {
 var paddleFile = {
   type:'image',
   key: 'paddle',
-  url: "http://pngimg.com/upload/cat_PNG100.png",
+  url: "http://mvshospital.com/wp-content/uploads/2015/06/13902170611226395134cat_png_by_dbszabo1-d3dn2c8.png",
   data: null,
   error: false,
   loaded: false
@@ -49,9 +49,8 @@ var graphicAssets = {
   ballURL: 'assets/svg/ball_blue.svg',
   ballName: 'ball',
 
-  // paddleFile.data = new Image ();
-  // paddleFile.data.name = paddleFile.key
-  paddleURL: 'assets/paddle.png',
+
+  paddleURL: paddleFile.data.crossOrigin.src,
   paddleName: 'paddle'
 };
 
@@ -90,8 +89,8 @@ mainState.prototype = {
       // game.load.image(graphicAssets.backgroundName, graphicAssets.backgroundURL);
 
       game.load.image(graphicAssets.ballName, graphicAssets.ballURL);
-      // game.load.image(graphicAssets.paddleName, graphicAssets.paddleURL);
-      game.load.image(paddleFile.data.src)
+      game.load.image(graphicAssets.paddleName, graphicAssets.paddleURL);
+      // game.load.image(paddleFile.data.src)
 
 
     },
@@ -126,11 +125,11 @@ mainState.prototype = {
 
       this.paddleLeftSprite = game.add.sprite(gameProperties.paddleLeft_x, game.world.centerY, graphicAssets.paddleName);
       this.paddleLeftSprite.anchor.set(0.5, 0.5);
-      this.paddleLeftSprite.scale.setTo(1, 5);
+      this.paddleLeftSprite.scale.setTo(.2, .2);
 
       this.paddleRightSprite = game.add.sprite(gameProperties.paddleRight_x, game.world.centerY, graphicAssets.paddleName)
       this.paddleRightSprite.anchor.set(0.5, 0.5);
-      this.paddleRightSprite.scale.setTo(1, 5);
+      this.paddleRightSprite.scale.setTo(.2, .2);
 
       this.tf_scoreLeft = game.add.text(fontAssets.scoreLeft_x, fontAssets.scoreTop_y, '0', fontAssets.scoreFontStyle)
       this.tf_scoreLeft.anchor.set(0.5, 0);
