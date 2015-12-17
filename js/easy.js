@@ -8,14 +8,18 @@ $('.search').click(function (){
     dataType: 'json'
   })
   getter.done(function (returned){
-    var images = returned['data']['children'][0]['data']['header_img'];
+    var images;
+    if (returned['data']['children'][0]['data']['header_img'] === null) {
+      images = 'assets/paddle.png'
+    } else {
+      images = returned['data']['children'][0]['data']['header_img'];
+    }
+    console.log(images);
     var paddleFile = {
       type:'image',
       key:'paddle',
       url: images,
-      data: null
     };
-    console.log(paddleFile.url);
 
 var gameProperties = {
     screenWidth: 800,
@@ -23,8 +27,8 @@ var gameProperties = {
 
     dashSize: 5,
 
-    paddleLeft_x: 30,
-    paddleRight_x: 770,
+    paddleLeftXPlane: 30,
+    paddleRightXPlane: 770,
     paddleVelocity: 600,
     paddleSegmentsMax: 4,
     paddleSegmentHeight: 20,
@@ -37,14 +41,6 @@ var gameProperties = {
 
     scoreToWin: 5,
 };
-// var paddleFile = {
-//   type:'image',
-//   key: 'paddle',
-//   url: 'images',
-//   data: null,
-//   // error: false,
-//   // loaded: false
-// };
 paddleFile.data = new Image();
 paddleFile.data.name = paddleFile.key;
 
@@ -61,12 +57,8 @@ paddleFile.data.crossOrigin = '';
 paddleFile.data.src = paddleFile.url;
 
 var graphicAssets = {
-  // backgroundURL: 'assets/tennis-court.png',
-  // backgroundName: 'tennisCourt',
-
   ballURL: 'assets/svg/ball_blue.svg',
   ballName: 'ball',
-
 
   paddleURL: paddleFile.data.crossOrigin.src,
   paddleName: 'paddle'
@@ -104,16 +96,10 @@ var mainState = function(game){
 mainState.prototype = {
 
     preload: function () {
-      // game.load.image(graphicAssets.backgroundName, graphicAssets.backgroundURL);
-
       game.load.image(graphicAssets.ballName, graphicAssets.ballURL);
       game.load.image(graphicAssets.paddleName, graphicAssets.paddleURL);
-      // game.load.image(paddleFile.data.src)
-
-
     },
 
-    // The create function is called after all assets are loaded and ready for use. This is where we add all our sprites, sounds, levels, text, etc.
     create: function () {
       this.initGraphics();
       this.initPhysics();
@@ -123,7 +109,6 @@ mainState.prototype = {
 
     },
 
-    // The update function is run every frame. The default frame rate is 60 frames per second, so the update function is run 60 times per second
     update: function () {
       this.moveLeftPaddle();
       this.moveRightPaddle();
@@ -145,7 +130,7 @@ mainState.prototype = {
       this.paddleLeftSprite.anchor.set(0.5, 0.5);
       this.paddleLeftSprite.scale.setTo(1, 1);
 
-      this.paddleRightSprite = game.add.sprite(gameProperties.paddleRight_x, game.world.centerY, graphicAssets.paddleName)
+      this.paddleRightSprite = game.add.sprite(gameProperties.paddleRightXPlane, game.world.centerY, graphicAssets.paddleName)
       this.paddleRightSprite.anchor.set(0.5, 0.5);
       this.paddleRightSprite.scale.setTo(1, 1);
 
