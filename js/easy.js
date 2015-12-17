@@ -22,7 +22,7 @@ var gameProperties = {
 var paddleFile = {
   type:'image',
   key: 'paddle',
-  url: "assets/tennisball.png",
+  url: "http://pngimg.com/upload/cat_PNG100.png",
   data: null,
   error: false,
   loaded: false
