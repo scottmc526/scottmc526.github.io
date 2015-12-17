@@ -9,10 +9,10 @@ $('.search').click(function (){
   })
   getter.done(function (returned){
     var images;
-    if (returned['data']['children'][0]['data']['header_img'] === null) {
+    if (returned['data']['children'][1]['data']['header_img'] === null) {
       images = 'assets/paddle.png'
     } else {
-      images = returned['data']['children'][0]['data']['header_img'];
+      images = returned['data']['children'][1]['data']['header_img'];
     }
     console.log(images);
     var paddleFile = {
