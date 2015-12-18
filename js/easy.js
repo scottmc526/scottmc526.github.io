@@ -10,12 +10,11 @@ $('.search').click(function (){
   })
   getter.done(function (returned){
     var images;
-    if (returned['data']['children'][1]['data']['header_img'] === null) {
+    if (returned['data']['children'][1]['data']['header_img'] === null || returned['data'] === undefined) {
       images = 'assets/paddle.png'
     } else {
       images = returned['data']['children'][1]['data']['header_img'];
     }
-    console.log(images);
     var paddleFile = {
       type:'image',
       key:'paddle',
@@ -119,9 +118,9 @@ mainState.prototype = {
     },
 
     create: function () {
-      this.initGraphics();
-      this.initPhysics();
-      this.initKeyboard();
+      this.pGraphics();
+      this.pPhysics();
+      this.pKeyboard();
       this.startDemo();
       game.stage.backgroundColor= '#68b259';
 
@@ -133,7 +132,7 @@ mainState.prototype = {
       game.physics.arcade.overlap(this.ballSprite, this.paddleGroup, this.collideWithPaddle, null, this)
     },
 
-    initGraphics: function() {
+    pGraphics: function() {
       this.backgroundGraphics = game.add.graphics(0, 0);
       this.backgroundGraphics.lineStyle(2, 0xFFFFFF, 1);
 
@@ -160,7 +159,7 @@ mainState.prototype = {
       this.tf_scoreRight.anchor.set(0.5, 0)
 
     },
-    initPhysics: function() {
+    pPhysics: function() {
       game.physics.startSystem(Phaser.Physics.ARCADE);
       game.physics.enable(this.ballSprite);
 
@@ -182,7 +181,7 @@ mainState.prototype = {
       this.paddleGroup.setAll('body.immovable', true);
 
     },
-    initKeyboard: function () {
+    pKeyboard: function () {
       this.paddleLeft_up = game.input.keyboard.addKey(Phaser.Keyboard.A);
       this.paddleLeft_down = game.input.keyboard.addKey(Phaser.Keyboard.S);
 
