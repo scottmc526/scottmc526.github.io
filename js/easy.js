@@ -52,6 +52,7 @@ switch (value) {
     break;
   case '5':
     ball = 'assets/svg/ball_yellow.svg';
+    break;
   default :
     ball = 'assets/ball.png'
 }
