@@ -1,12 +1,13 @@
 <!doctype html>
 <html>
     <head>
-        <title>Easy Pong</title>
+        <title>Pong</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
         <link rel="stylesheet" href="css/app.css">
     </head>
     <body>
       <div class='left'>
+        <p class='one'>Player 1:</p>
         <div class='pic'></div>
         <div class='name'></div>
 
@@ -26,7 +27,13 @@
 
 
       </div>
-      <div class='right'></div>
+      <div class='right'>
+        <p class='one'>Player 2:</p>
+        <div class='pic2'></div>
+        <div class='name2'></div>
+
+              <button class='click2' type='button' name='button'>Create Player</button>
+      </div>
     </body>
     <script src='https://code.jquery.com/jquery-2.1.4.min.js'></script>
     <script src="js/phaser.min.js"></script>

@@ -1,7 +1,7 @@
 body {
   margin: 0;
   display: flex;
-  background-color: red;
+  background: url(http://www.salemhigh.com/athletics/gtennis/images/Tennis.jpg);
 }
 #gameDiv {
   margin: 0 auto;
@@ -17,11 +17,9 @@ body {
 .right {
   height: 90vh;
   width: 10vw;
-  border: 1px solid black;
   margin: 1% auto;
-}
-.click {
-  margin: auto;
+  display: flex;
+  flex-direction: column;
 }
 .pic {
   display: flex;
@@ -29,7 +27,17 @@ body {
   width: 100%;
   height: 20%;
 }
+.pic2{
+  display: flex;
+  margin: 5% auto;
+  width: 100%;
+  height: 20%;
+}
 .name {
+  width: 100%;
+  height: 30%;
+}
+.name2 {
   width: 100%;
   height: 30%;
 }
@@ -54,10 +62,24 @@ img {
   color: white;
 }
 .click {
+  margin: auto;
   background-color: black;
   color: white;
   border: 0;
   font-family: optima;
   height: 5vh;
   width: 5vw;
+}
+.click2 {
+  margin: auto;
+  background-color: black;
+  color: white;
+  border: 0;
+  font-family: optima;
+  height: 5vh;
+  width: 5vw
+}
+.one {
+  font-family: optima;
+  color: white;
 }
