@@ -10,7 +10,6 @@ body {
 .left {
   height: 90vh;
   width: 10vw;
-  border: 1px solid black;
   margin: 1% auto;
   display: flex;
   flex-direction: column;
@@ -30,6 +29,10 @@ body {
   width: 100%;
   height: 20%;
 }
+.name {
+  width: 100%;
+  height: 30%;
+}
 img {
   margin: 0 auto;
   border: 4px solid white;
@@ -38,13 +41,23 @@ img {
   height: 100%;
   width: 80%;
 }
-
-/*.player {
-  list-style: none;
-
+.search {
+  background-color: blue;
+  border-radius: 5px;
+  border: 0;
+  color: white;
+  font-family: impact;
+  font-size: 15px;
 }
-.pic {
-  height: 20vh;
-  width: 10vw;
-  list-style: none;
-}*/
+.person {
+  font-family: optima;
+  color: white;
+}
+.click {
+  background-color: black;
+  color: white;
+  border: 0;
+  font-family: optima;
+  height: 5vh;
+  width: 5vw;
+}

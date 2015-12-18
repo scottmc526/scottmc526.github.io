@@ -8,8 +8,12 @@ $(document).ready(function (){
       })
       getter.done(function (returned){
         var result = returned['results'][0]['user']['picture']['thumbnail'];
+        var firstNamey = returned['results'][0]['user']['name']['first'];
+        var lastNamey = returned['results'][0]['user']['name']['last'];
+
+
         $('.pic').empty().append('<img src="'+result+'"/>')
-        // $('.left').append(returned['results'][0]['user']['name']['first'])
+        $('.name').empty().append('<p class="person">'+firstNamey+' '+lastNamey+'</p>')
       })
     })
 })
